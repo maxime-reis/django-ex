@@ -36,6 +36,14 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    # project apps
+    'techlab_systems',
+    'benchmarks',
+    'hardwarelabs_core',
+    'SSD',
+    'software_configuration',
+    'hardware_configuration',
+    'manufacturer',
     # third-party apps
     'guardian',
     'bulk_admin',
