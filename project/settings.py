@@ -36,6 +36,11 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    # third-party apps
+    'guardian',
+    'bulk_admin',
+    'crispy_forms',
+    # django contrib apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
