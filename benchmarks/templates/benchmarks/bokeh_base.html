@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block page_title %}
+<title>Hardwarelabs benchmarks</title>
+{% endblock %}
+
+{% block extra_includes %}
+
+<link href={% static 'css/bokeh-0.12.3.min.css' %} rel="stylesheet" type="text/css">
+<script src={% static 'js/bokeh-0.12.3.min.js' %}></script>
+<link href={% static 'css/bokeh-widgets-0.12.3.min.css' %} rel="stylesheet" type="text/css">
+<script src={% static 'js/bokeh-widgets-0.12.3.min.js' %}></script>
+
+<script src={% static 'js/bokeh-api.min.js' %}></script>
+
+<link href={% static 'css/style.css' %} rel="stylesheet" type="text/css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.3.0/d3.min.js"></script>
+
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid bk-root">
+		<button class="btn-block btn-primary hidden-md-up" type="button" data-toggle="collapse" data-target="#bokeh_widgets" aria-expanded='true' aria-controls="bokeh_widgets">
+			Show/Hide filters
+		</button>
+	<div class="col-md-5" id="left">
+<!--
+-->
+		<div class="col-md-12 collapse in" id="bokeh_widgets">
+			{% for widget in bokeh_widgets %}
+			<div class="widget_group_box">
+				<div id="{{ widget.elementid }}""></div>
+			</div>
+			{% endfor %}
+		</div>
+		<div class="col-md-12" style="min-height: 50%;"></div>
+	</div>
+
+	<div class="col-md-7" id="right">
+		<div class="col-md-10 offset-md-1">
+			{% for plot in bokeh_plots %}
+				<div id="{{ plot.elementid }}"></div>
+			{% endfor %}
+			<div id="plot"></div>
+		</div>
+		<div class="col-md-1"></div>
+	</div>
+</div>
+{{ bokeh_script|safe }}
+
+{% endblock %}

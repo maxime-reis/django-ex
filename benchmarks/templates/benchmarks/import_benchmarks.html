@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% crispy form %}
+
+{% block page_title %}
+<title>Hardwarelabs benchmarks upload</title>
+{% endblock %}
+
+{% block extra_includes %}
+<script
+	src="https://code.jquery.com/jquery-3.1.1.min.js"
+	integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+	crossorigin="anonymous">
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="col-sm-12 col-md-5">
+	{% crispy form form.helper %}
+</div>
+<div class="col-sm-12 col-md-7" id="uploaded_file_content">
+	{{ content|linebreaks }}
+</div>
+
+<script>
+function upload_file(input) {
+	$('#uploaded_file_content').innerHTML += 'change<br>';
+	if (input.files && input.files[0]) {
+		alert("test#2");
+		var reader = new FileReader();
+		reader.onload = function (e) {
+			document.getElementById("uploaded_file_content").innerHTML = e.target.result;
+		}
+		reader.readAsText(input.files[0]);
+	}
+}
+
+$('#import_ssd_benchmark_form').on('change', function() {
+	upload_file(this);
+});
+</script>
+{% endblock %}

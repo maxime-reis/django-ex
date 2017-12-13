@@ -1,0 +1,39 @@
+{% load hardwarelabs_extras %}
+<div id="cern-toolbar">
+
+    <h1><a href="http://home.cern" title="CERN">CERN <span>Accelerating science</span></a></h1>
+
+    <ul class="cern-signedin">
+        <li class="cern-accountlinks">
+        {% if request.user.is_authenticated %}
+            <span>Signed in as:
+            {% if request.META.ADFS_IDENTITYCLASS == 'Unverified External' %}
+                <a class="account" href="http://cern.ch/account" title="Signed in with an unverified external account">{{ request.META.ADFS_EMAIL }} ({{ request.META.ADFS_FEDERATION }})</a> </span>
+            {% elif request.META.ADFS_IDENTITYCLASS == 'CERN Registered' %}
+                {% with "Signed in as "|addstr:request.META.ADFS_FULLNAME|addstr:" ("|addstr:request.META.ADFS_LOGIN|addstr:")" as tooltip %}
+                <a class="account" href="http://cern.ch/account" title="{{ tooltip }}">{{ request.META.ADFS_LOGIN }} ({{ request.META.ADFS_HOMEINSTITUTE }})</a> </span>
+                {% endwith %}
+            {% else %}
+                <a class="account" href="http://cern.ch/account">{{ request.META.ADFS_EMAIL }} ({{ request.META.ADFS_FEDERATION }})</a> </span>
+            {% endif %}
+            <a class="cern-signout" href="{% url 'logout' %}?ReturnTo={{ request.path | urlencode }}" title="Sign out of your account">Sign out</a>
+        {% else %}
+        <a class="cern-account" href="{% url 'login' %}?ReturnTo={{ request.path | urlencode }}" title="Sign in to your CERN account">Sign in</a>
+        {% endif %}
+        </li>
+        <li>
+            <a class="cern-directory" href="http://cern.ch/directory" title="Search CERN resources and browse the directory">Directory</a>
+        </li>
+    </ul>
+
+</div><!-- /#cern-toolbar -->
+
+<!--
+  anonymous            OK
+  CERN registered      OK
+  CERN shared
+  CERN HEP trusted
+  external verified
+  external unverified  OK
+  CERN multifactor
+-->

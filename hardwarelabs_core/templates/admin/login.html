@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+    <p class="errornote">
+    {% block trimmed %}
+        You are authenticated as {{ username }}, but are not authorized to
+        access this page.
+    {% endblock %}
+    </p>
+    {% endif %}
+{% endblock %}
