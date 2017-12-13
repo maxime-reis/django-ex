@@ -12,11 +12,11 @@ urlpatterns = [
     url(r'^$', index),
     url(r'^health$', health),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^benchmarks/', include('benchmarks.urls')),
 ]
 
 if settings.DEBUG:
     import debug_toolbar
     urlpatterns = [
         url(r'^__debug__/', include(debug_toolbar.urls)),
-        url(r'^benchmarks/', include('benchmarks.urls')),
     ] + urlpatterns
