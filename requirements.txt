@@ -7,3 +7,4 @@ django-guardian==1.4.5
 bokeh==0.12.3
 pandas==0.20.3
 django-bulk-admin
+django-crispy-forms
