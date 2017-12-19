@@ -37,17 +37,17 @@ ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     # project apps
-    'techlab_systems',
-    'benchmarks',
-    'hardwarelabs_core',
-    'SSD',
-    'software_configuration',
-    'hardware_configuration',
-    'manufacturer',
+#    'techlab_systems',
+#    'benchmarks',
+#    'hardwarelabs_core',
+#    'SSD',
+#    'software_configuration',
+#    'hardware_configuration',
+#    'manufacturer',
     # third-party apps
-    'guardian',
-    'bulk_admin',
-    'crispy_forms',
+#    'guardian',
+#    'bulk_admin',
+#    'crispy_forms',
     # django contrib apps
     'django.contrib.admin',
     'django.contrib.auth',
