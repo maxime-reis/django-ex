@@ -24,6 +24,8 @@ def config():
         'NAME': name,
         'USER': os.getenv('DATABASE_USER'),
         'PASSWORD': os.getenv('DATABASE_PASSWORD'),
-        'HOST': os.getenv('{}_SERVICE_HOST'.format(service_name)),
-        'PORT': os.getenv('{}_SERVICE_PORT'.format(service_name)),
+#        'HOST': os.getenv('{}_SERVICE_HOST'.format(service_name)),
+#        'PORT': os.getenv('{}_SERVICE_PORT'.format(service_name)),
+        'HOST': 'dbod-hwlabs.cern.ch',
+        'PORT': '6603',
     }
