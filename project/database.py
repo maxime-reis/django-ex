@@ -22,7 +22,8 @@ def config():
     return {
         'ENGINE': engine,
         'NAME': name,
-        'USER': os.getenv('DATABASE_USER'),
+#        'USER': os.getenv('DATABASE_USER'),
+        'USER': "admin",
 #        'PASSWORD': os.getenv('DATABASE_PASSWORD'),
         'PASSWORD': "fakepassword",
 #        'HOST': os.getenv('{}_SERVICE_HOST'.format(service_name)),
