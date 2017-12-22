@@ -22,8 +22,12 @@ def config():
     return {
         'ENGINE': engine,
         'NAME': name,
-        'USER': os.getenv('DATABASE_USER'),
-        'PASSWORD': os.getenv('DATABASE_PASSWORD'),
-        'HOST': os.getenv('{}_SERVICE_HOST'.format(service_name)),
-        'PORT': os.getenv('{}_SERVICE_PORT'.format(service_name)),
+#        'USER': os.getenv('DATABASE_USER'),
+        'USER': "admin",
+#        'PASSWORD': os.getenv('DATABASE_PASSWORD'),
+        'PASSWORD': "fakepassword",
+#        'HOST': os.getenv('{}_SERVICE_HOST'.format(service_name)),
+#        'PORT': os.getenv('{}_SERVICE_PORT'.format(service_name)),
+        'HOST': 'dbod-hwlabs.cern.ch',
+        'PORT': '6603',
     }

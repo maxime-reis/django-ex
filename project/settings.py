@@ -95,17 +95,17 @@ WSGI_APPLICATION = 'wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-from . import database
+#from . import database
 
 #DATABASES = {
 #    'default': database.config()
 #}
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'hardwarelabs',
-        'USER': 'admin',
-        'PASSWORD': os.getenv('DATABASE_PASSWORD'),
+        'ENGINE': engine,
+        'NAME': name,
+        'USER': "admin",
+        'PASSWORD': "fakepassword",
         'HOST': 'dbod-hwlabs.cern.ch',
         'PORT': '6603',
     },
