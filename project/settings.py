@@ -56,6 +56,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
+    # Remote user auth
+    'hardwarelabs_core.middleware.remote_user_attributes_middleware.RemoteUserAttrMiddleware',
 ]
 
 ROOT_URLCONF = 'project.urls'
@@ -131,3 +133,33 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 INTERNAL_IPS = ['127.0.0.1']
+
+AUTHENTICATION_BACKENDS = {
+    'guardian.backends.ObjectPermissionBackend',
+    'django.contrib.auth.backends.RemoteUserBackend',
+}
+
+ADFS_GROUPS = [
+    'procurement-rd',
+    'hardware-labs',
+    'techlab-admins',
+    'openlab-admin',
+]
+
+ADFS_TO_DJANGO_GROUPS_MAPPING = {
+    'procurement-rd': ['admin'],
+    'hardware-labs': ['admin'],
+    'techlab-admins': ['admin'],
+    'openlab-admins': ['admin'],
+    'cern-accounts-primary': ['view_techlab'],
+}
+
+ADFS_GROUPS_THAT_GIVE_STAFF_STATUS = [
+    'procurement-rd',
+]
+
+ADFS_GROUPS_THAT_GIVE_SUPERUSER_STATUS = [
+    'hardware-labs',
+]
+
+BASE_GROUP = 'all'
