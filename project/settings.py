@@ -57,7 +57,7 @@ MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
     # Remote user auth
-    'middleware.remote_user_attributes_middleware.RemoteUserAttrMiddleware',
+    'project.middleware.remote_user_attributes_middleware.RemoteUserAttrMiddleware',
 ]
 
 ROOT_URLCONF = 'project.urls'
