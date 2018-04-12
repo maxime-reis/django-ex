@@ -56,8 +56,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
-    # Remote user auth
-    'hardwarelabs_core.middleware.remote_user_attributes_middleware.RemoteUserAttrMiddleware',
 ]
 
 ROOT_URLCONF = 'project.urls'
