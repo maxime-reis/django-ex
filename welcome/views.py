@@ -12,11 +12,14 @@ def index(request):
     hostname = os.getenv('HOSTNAME', 'unknown')
     PageView.objects.create(hostname=hostname)
 
+    adfs_groups = [request.META[key] for key in request.META if key.startswith('ADFS_GROUP')]
+
     return render(request, 'welcome/index.html', {
         'hostname': hostname,
         'database': database.info(),
         'count': PageView.objects.count(),
         'user': request.user,
+        'groups': adfs_groups,
     })
 
 def health(request):
